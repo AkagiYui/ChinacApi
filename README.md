@@ -25,6 +25,8 @@ pip install chinacapi -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 使用
 
+你需要先在[星界链控制台](https://console.chinac.com/iam)申请访问密钥。
+
 ```python
 from chinacapi.cloud_phone_region import CloudPhoneRegion
 from chinacapi.entity.cloud_phone import CloudPhone
