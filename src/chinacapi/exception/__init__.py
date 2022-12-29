@@ -8,3 +8,7 @@ class IncorrectInstanceStatus(Exception):
 
 class NotStopError(IncorrectInstanceStatus):
     ...
+
+
+class RequestError(Exception):
+    ...

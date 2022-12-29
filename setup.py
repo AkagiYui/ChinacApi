@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 long_description = pathlib.Path('README.md').read_text(encoding='utf-8')  # 读取README.md文件内容
 setup(
     name='chinacapi',  # 包名
-    version='0.1.1',  # 版本号
+    version='0.1.2',  # 版本号
     author='AkagiYui',  # 作者
     author_email='akagiyui@yeah.net',  # 作者邮箱
     description='A chinac api operator',  # 描述

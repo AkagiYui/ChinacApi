@@ -6,6 +6,7 @@ import json
 from typing import Dict
 
 from chinacapi.cloud_phone_api import CloudPhoneApi
+from chinacapi.exception import RequestError
 from chinacapi.utils import generate_headers, request, percent_url_encode_params, percent_url_encode_str, \
     sha_hmac256_signature
 
@@ -49,6 +50,23 @@ class ChinacApi:
         if code == 200:
             return json.loads(response_body)
         raise Exception(f'request error, code: {code}, body: {response_body}')
+
+    @staticmethod
+    def get_request_ip() -> str:
+        """
+        获取请求IP
+        :return: 请求IP
+        """
+        url = 'https://console.chinac.com/gateway/chinac/common/getRequestIP'
+        code, response_body = request(url, method='POST')
+        if code != 200:
+            raise RequestError(f'get ip error, code: {code}, body: {response_body}')
+        response = json.loads(response_body)
+        if 'ResponseCode' not in response_body or 'ResponseData' not in response_body:
+            raise RequestError(f'get ip error, body: {response_body}')
+        if response['ResponseCode'] != 100000:
+            raise RequestError(f'get ip error, body: {response_body}')
+        return response['ResponseData']
 
     def _generate_url(self, action, headers, method) -> str:
         """

@@ -1,6 +1,5 @@
 # ChinacApi 星界链API
 
-[![release](https://github.com/AkagiYui/ChinacApi/workflows/release/badge.svg)](https://github.com/AkagiYui/ChinacApi/actions?query=workflow%3Arelease) 
 [![pypi](https://img.shields.io/pypi/v/chinacapi.svg)](https://pypi.org/project/chinacapi/)
 ![support-version](https://img.shields.io/pypi/pyversions/chinacapi) 
 [![license](https://img.shields.io/github/license/AkagiYui/ChinacApi)](https://github.com/AkagiYui/ChinacApi/blob/master/LICENSE)  
@@ -16,6 +15,7 @@
 - [x] 开启/关闭云手机
 - [x] 获取云手机ADB白名单IP列表
 - [x] 设置云手机ADB白名单IP
+- [x] 获取本机在星界链的公网IP
 
 ## 安装
 
@@ -55,11 +55,12 @@ print(cpa.describe_cloud_phone(cp.region, cp.id))
 ips = cpa.list_cloud_phone_adb_white_ip(CloudPhoneRegion.SZ)
 print(ips)
 
+# 获取本机在星界链的公网IP
+my_ip = ChinacApi.get_request_ip()
+print(my_ip)
+
 # 设置云手机ADB白名单
-print(cpa.set_cloud_phone_adb_white_ip(CloudPhoneRegion.SZ, list(set(ips + [
-    '1.1.1.1', '1.1.1.2', '1.1.1.3', 
-    '1.1.1.4', '1.1.1.5', '1.1.1.6',
-]))))
+print(cpa.set_cloud_phone_adb_white_ip(CloudPhoneRegion.SZ, list(set(ips + my_ip))))
 ips = cpa.list_cloud_phone_adb_white_ip(CloudPhoneRegion.SZ)
 print(ips)
 
