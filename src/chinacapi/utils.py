@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from typing import Tuple, Dict, Mapping
 
 from chinacapi.cloud_phone_region import CloudPhoneRegion
-from chinacapi.exception.cloud_phone_status import CloudPhoneStatus
+from chinacapi.entity.cloud_phone_status import CloudPhoneStatus
 
 
 def request(request_url, headers: dict = None, body: bytes = None, method='GET') -> Tuple[int, str]:
@@ -23,7 +23,7 @@ def request(request_url, headers: dict = None, body: bytes = None, method='GET')
     req = urllib.request.Request(
         request_url,
         data=body,
-        headers=headers,
+        headers=headers or {},
         method=method,
     )
     res = urllib.request.urlopen(req)

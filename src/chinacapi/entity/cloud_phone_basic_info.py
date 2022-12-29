@@ -4,7 +4,7 @@ from chinacapi.utils import dataclass_ex
 
 if TYPE_CHECKING:
     from chinacapi.cloud_phone_region import CloudPhoneRegion
-    from chinacapi.exception.cloud_phone_status import CloudPhoneStatus
+    from chinacapi.entity.cloud_phone_status import CloudPhoneStatus
 
 
 @dataclass_ex
